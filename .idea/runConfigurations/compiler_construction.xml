@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="compiler_construction" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="compiler_construction" TARGET_NAME="compiler_construction" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="compiler_construction" RUN_TARGET_NAME="compiler_construction">
+    <envs />
+    <method />
+  </configuration>
+</component>
