@@ -3,7 +3,10 @@
 //
 #include <iostream>
 
+#include "Lexer.h"
+
 int main () {
     std::cout << "hello";
+    Lexer* lex = new Lexer();
     return 0;
 }

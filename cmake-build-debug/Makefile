@@ -123,6 +123,60 @@ compiler_construction/fast:
 	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/build
 .PHONY : compiler_construction/fast
 
+Lexer.o: Lexer.cpp.o
+
+.PHONY : Lexer.o
+
+# target to build an object file
+Lexer.cpp.o:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Lexer.cpp.o
+.PHONY : Lexer.cpp.o
+
+Lexer.i: Lexer.cpp.i
+
+.PHONY : Lexer.i
+
+# target to preprocess a source file
+Lexer.cpp.i:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Lexer.cpp.i
+.PHONY : Lexer.cpp.i
+
+Lexer.s: Lexer.cpp.s
+
+.PHONY : Lexer.s
+
+# target to generate assembly for a file
+Lexer.cpp.s:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Lexer.cpp.s
+.PHONY : Lexer.cpp.s
+
+Token.o: Token.cpp.o
+
+.PHONY : Token.o
+
+# target to build an object file
+Token.cpp.o:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Token.cpp.o
+.PHONY : Token.cpp.o
+
+Token.i: Token.cpp.i
+
+.PHONY : Token.i
+
+# target to preprocess a source file
+Token.cpp.i:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Token.cpp.i
+.PHONY : Token.cpp.i
+
+Token.s: Token.cpp.s
+
+.PHONY : Token.s
+
+# target to generate assembly for a file
+Token.cpp.s:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Token.cpp.s
+.PHONY : Token.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +213,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... compiler_construction"
+	@echo "... Lexer.o"
+	@echo "... Lexer.i"
+	@echo "... Lexer.s"
+	@echo "... Token.o"
+	@echo "... Token.i"
+	@echo "... Token.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

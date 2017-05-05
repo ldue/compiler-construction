@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/compiler_construction.dir/main.cpp.o"
+  "CMakeFiles/compiler_construction.dir/Lexer.cpp.o"
+  "CMakeFiles/compiler_construction.dir/Token.cpp.o"
   "compiler_construction.pdb"
   "compiler_construction.exe"
   "libcompiler_construction.dll.a"

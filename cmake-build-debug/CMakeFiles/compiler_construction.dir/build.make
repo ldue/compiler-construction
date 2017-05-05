@@ -81,17 +81,69 @@ CMakeFiles/compiler_construction.dir/main.cpp.o.provides: CMakeFiles/compiler_co
 CMakeFiles/compiler_construction.dir/main.cpp.o.provides.build: CMakeFiles/compiler_construction.dir/main.cpp.o
 
 
+CMakeFiles/compiler_construction.dir/Lexer.cpp.o: CMakeFiles/compiler_construction.dir/flags.make
+CMakeFiles/compiler_construction.dir/Lexer.cpp.o: ../Lexer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/compiler_construction.dir/Lexer.cpp.o"
+	/usr/bin/c++.exe   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compiler_construction.dir/Lexer.cpp.o -c /cygdrive/c/Users/Lars/Documents/CC/compiler-construction/Lexer.cpp
+
+CMakeFiles/compiler_construction.dir/Lexer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compiler_construction.dir/Lexer.cpp.i"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Lars/Documents/CC/compiler-construction/Lexer.cpp > CMakeFiles/compiler_construction.dir/Lexer.cpp.i
+
+CMakeFiles/compiler_construction.dir/Lexer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compiler_construction.dir/Lexer.cpp.s"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Lars/Documents/CC/compiler-construction/Lexer.cpp -o CMakeFiles/compiler_construction.dir/Lexer.cpp.s
+
+CMakeFiles/compiler_construction.dir/Lexer.cpp.o.requires:
+
+.PHONY : CMakeFiles/compiler_construction.dir/Lexer.cpp.o.requires
+
+CMakeFiles/compiler_construction.dir/Lexer.cpp.o.provides: CMakeFiles/compiler_construction.dir/Lexer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Lexer.cpp.o.provides.build
+.PHONY : CMakeFiles/compiler_construction.dir/Lexer.cpp.o.provides
+
+CMakeFiles/compiler_construction.dir/Lexer.cpp.o.provides.build: CMakeFiles/compiler_construction.dir/Lexer.cpp.o
+
+
+CMakeFiles/compiler_construction.dir/Token.cpp.o: CMakeFiles/compiler_construction.dir/flags.make
+CMakeFiles/compiler_construction.dir/Token.cpp.o: ../Token.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/compiler_construction.dir/Token.cpp.o"
+	/usr/bin/c++.exe   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compiler_construction.dir/Token.cpp.o -c /cygdrive/c/Users/Lars/Documents/CC/compiler-construction/Token.cpp
+
+CMakeFiles/compiler_construction.dir/Token.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compiler_construction.dir/Token.cpp.i"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Lars/Documents/CC/compiler-construction/Token.cpp > CMakeFiles/compiler_construction.dir/Token.cpp.i
+
+CMakeFiles/compiler_construction.dir/Token.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compiler_construction.dir/Token.cpp.s"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Lars/Documents/CC/compiler-construction/Token.cpp -o CMakeFiles/compiler_construction.dir/Token.cpp.s
+
+CMakeFiles/compiler_construction.dir/Token.cpp.o.requires:
+
+.PHONY : CMakeFiles/compiler_construction.dir/Token.cpp.o.requires
+
+CMakeFiles/compiler_construction.dir/Token.cpp.o.provides: CMakeFiles/compiler_construction.dir/Token.cpp.o.requires
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Token.cpp.o.provides.build
+.PHONY : CMakeFiles/compiler_construction.dir/Token.cpp.o.provides
+
+CMakeFiles/compiler_construction.dir/Token.cpp.o.provides.build: CMakeFiles/compiler_construction.dir/Token.cpp.o
+
+
 # Object files for target compiler_construction
 compiler_construction_OBJECTS = \
-"CMakeFiles/compiler_construction.dir/main.cpp.o"
+"CMakeFiles/compiler_construction.dir/main.cpp.o" \
+"CMakeFiles/compiler_construction.dir/Lexer.cpp.o" \
+"CMakeFiles/compiler_construction.dir/Token.cpp.o"
 
 # External object files for target compiler_construction
 compiler_construction_EXTERNAL_OBJECTS =
 
 compiler_construction.exe: CMakeFiles/compiler_construction.dir/main.cpp.o
+compiler_construction.exe: CMakeFiles/compiler_construction.dir/Lexer.cpp.o
+compiler_construction.exe: CMakeFiles/compiler_construction.dir/Token.cpp.o
 compiler_construction.exe: CMakeFiles/compiler_construction.dir/build.make
 compiler_construction.exe: CMakeFiles/compiler_construction.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable compiler_construction.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable compiler_construction.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/compiler_construction.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -100,6 +152,8 @@ CMakeFiles/compiler_construction.dir/build: compiler_construction.exe
 .PHONY : CMakeFiles/compiler_construction.dir/build
 
 CMakeFiles/compiler_construction.dir/requires: CMakeFiles/compiler_construction.dir/main.cpp.o.requires
+CMakeFiles/compiler_construction.dir/requires: CMakeFiles/compiler_construction.dir/Lexer.cpp.o.requires
+CMakeFiles/compiler_construction.dir/requires: CMakeFiles/compiler_construction.dir/Token.cpp.o.requires
 
 .PHONY : CMakeFiles/compiler_construction.dir/requires
 
