@@ -23,18 +23,21 @@ Lexer::Lexer(std::string path) {
 
 void Lexer::advCurChar() {
     srcFile->get(curChar);
-    std::cout << "LEXER: curChar = " << curChar << std::endl;
+    //std::cout << "LEXER: curChar = " << curChar << std::endl;
 }
 
 Token Lexer::getAlphaTok() {
     std::string tokStr = "";
-    do {
-        tokStr += curChar;
+    tokStr += curChar;
+    while (isalnum(srcFile->peek()) && !srcFile->eof() ) {
         advCurChar();
-    } while (isalnum(curChar));
+        tokStr += curChar;
+    }
+    if(srcFile->eof())
+        return Token(tok_err);
 
     //switch keywords
-    Token tmp = getKeyordTok(tokStr);
+    Token tmp = getKeywordTok(tokStr);
     if (tmp.getType() != tok_err)
         return tmp;
 
@@ -44,12 +47,12 @@ Token Lexer::getAlphaTok() {
         return tmp;
 
     SymbolTable->push_back(tokStr);
-    return Token(tok_id, SymbolTable->size());
+    return Token(tok_id, SymbolTable->size()-1);
 
 }
 
-Token Lexer::getKeyordTok(std::string keyword) {
-    std::cout << "LEXER: keyword = " << keyword << std::endl;
+Token Lexer::getKeywordTok(std::string keyword) {
+    //std::cout << "LEXER: keyword = " << keyword << std::endl;
     if (keyword.compare("package") == 0)
         return Token(tok_package);
     if (keyword.compare("break") == 0)
@@ -106,14 +109,52 @@ Token Lexer::getKeyordTok(std::string keyword) {
 Token Lexer::getLitBoolTok(std::string keyword) {
     if ( (keyword.compare("true") == 0) || (keyword.compare("false") == 0) ) {
         SymbolTable->push_back(keyword);
-        return Token(tok_litBool, SymbolTable->size());
+        return Token(tok_litBool, SymbolTable->size()-1);
     } else
         return Token(tok_err);
+}
+
+Token Lexer::getLitStrTok() {
+    std::string tokStr = "";
+    advCurChar();
+    while ( (curChar != '\"') && (curChar != EOF) ) {
+        tokStr += curChar;
+        advCurChar();
+    }
+    if(curChar == EOF)
+        return Token(tok_err);
+
+    SymbolTable->push_back(tokStr);
+    return Token(tok_litString, SymbolTable->size()-1);
+}
+
+Token Lexer::skipCommentTok() {
+    if(srcFile->eof())
+        return Token(tok_eof);
+
+    switch(curChar) {
+        case '/': { //Single Line Comment
+            do {
+                advCurChar();
+            } while ( (curChar != '\0') && !srcFile->eof()); // not newline
+            return getNextTok();
+        }
+        case '*': { //Multi Line Comment
+            do {
+                advCurChar();
+            } while ( (curChar == '*') && (srcFile->peek() == '/')); // not */
+            return getNextTok();
+        }
+    }
+    return Token(tok_err);
 }
 
 
 Token Lexer::getNextTok() {
     advCurChar();
+    if (srcFile->eof())
+        return Token(tok_eof);
+
 
     if (isspace(curChar))
         return this->getNextTok();
@@ -121,11 +162,25 @@ Token Lexer::getNextTok() {
     if (isalpha(curChar))// identifier: [a-zA-Z][a-zA-Z0-9]*
         return this->getAlphaTok();
 
+    switch(curChar){
+        case '\"': return getLitStrTok();
+        case '(': return Token(tok_parL);
+        case ')': return Token(tok_parR);
+        case '[': return Token(tok_braL);
+        case ']': return Token(tok_braR);
+        case '{': return Token(tok_curL);
+        case '}': return Token(tok_curR);
+        case '.': {
+            if(srcFile->peek() != '.')
+                return Token(tok_dot);
+        };
+        case '/': return skipCommentTok();
+        }
 
     return Token(tok_err);
 }
 
-const std::vector<std::string> *Lexer::getSymbolTable() const {
+std::vector<std::string> *Lexer::getSymbolTable() const {
     return SymbolTable;
 }
 

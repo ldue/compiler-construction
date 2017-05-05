@@ -101,7 +101,7 @@ enum tok {
     tok_TypeFloat = 80,
     tok_TypeRune = 81,
     tok_TypeString = 82,
-    tok_TypeBool = 83
+    tok_TypeBool = 83,
 };
 class Token {
 private:
@@ -116,6 +116,7 @@ public:
 
     int getTableIndex() const;
 
+    std::string getTokenName();
 };
 
 

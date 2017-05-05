@@ -23,11 +23,13 @@ private:
     void advCurChar();
 
     Token getAlphaTok();
-    Token getKeyordTok(std::string keyword);
+    Token getKeywordTok(std::string keyword);
 
     Token getLitBoolTok(std::string keyword);
     Token getLitStrTok();
     Token getLitNumTok();
+
+    Token skipCommentTok();
 
 public:
     Lexer(std::string path);
@@ -36,7 +38,7 @@ public:
 
     Token getNextTok();
 
-    const std::vector<std::string>* getSymbolTable() const;
+    std::vector<std::string>* getSymbolTable() const;
 
     const std::vector<Token>* getTokenStream() const;
 };
