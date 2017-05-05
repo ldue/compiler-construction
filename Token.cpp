@@ -8,3 +8,11 @@
 Token::Token(tok type) : type(type) {}
 Token::Token(tok type, int tableIndex) : tableIndex(tableIndex), type(type) {}
 
+
+tok Token::getType() const {
+    return type;
+}
+
+int Token::getTableIndex() const {
+    return tableIndex;
+}
