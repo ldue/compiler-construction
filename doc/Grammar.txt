@@ -1,0 +1,64 @@
+Capitalized words are productions, everything in quotation marks is a terminal/token
+-> : mpas to ; | : or ; E : empty
+
+S -> Sourcefile
+Sourcefile -> PackageClause ";" ImportClause ";" TopLevelDeclaration ";"
+
+PackageClause -> "package" "id" ";"
+
+ImportClause -> "import" "stringLit" ";" ImportClause | "import" "(" ImportList ")" ImportClause | E
+ImportList -> "import" "(" ImportListEntry ")" ";"
+ImportListEntry -> "stringLit" ";" ImportListEntry | E
+
+
+
+//BNF without left recursion following
+TopLevelDeclaration -> Declaration | FunctionDecl | Declaration TopLevelDeclaration | FunctionDecl TopLevelDeclaration | E
+FunctionDecl -> FunctionDeclaration  FunctionBody
+
+FunctionDeclaration -> "func" "id" "(" Parameter ")" FunctionReturn
+FunctionBody -> Block
+FunctionReturn -> "(" ReturnList ")" | ReturnType | E
+ReturnList -> NamedReturnList | UnnamedReturnList
+NamedReturnList -> TypeInstance "," NamedReturnList | TypeInstance
+UnnamedReturnList -> Type "," UnnamedReturnList | Type
+ReturnType -> TypeInstance | Type
+Parameter -> TypeInstance | TypeInstance "," Parameter | Type | Type "," Parameter | E
+
+TypeInstance -> "id" Type | "id" "," TypeInstance
+Type -> "int" | "float" | "bool" | "string" | "rune"
+
+Declaration -> VarDecl
+VarDecl -> "var" VarSpec
+VarSpec -> IdentifierList Type | IdentifierList Type "=" ExpressionList | IdentifierList ExpressionList
+
+Statement  -> Declaration | SimpleStmt | Block | IfStmt | SwitchStmt | ForStmt
+SimpleStmt -> Expression | IncDecStmt | Assignment | ShortVarDecl
+
+IfStmt ->
+SwitchStmt ->
+ForStmt ->
+IncDecStmt -> Expression "++" | Expression "--"
+Assignment -> ExpressionList "=" ExpressionList
+Block -> "{" StatementList "}"
+
+Expression -> UnaryExpr Expression'
+Expression' -> BinaryOp Expression' Expression | E
+UnaryExpr = PrimaryExpr | UnaryOp UnaryExpr
+BinaryOp -> "||" | "&&" | RelOp | AddOp | MulOp
+RelOp -> "==" | "!=" | "<" | "<=" | ">" | ">="
+AddOp -> "+" | "-" | "|" "^"
+MulOp -> "*" | "/" | "%" | "<<" | ">>" | "&" | "&^"
+UnaryOp -> "+" | "-" | "!" | "^" | "&" | "<-"
+PrimaryExpr -> Operand
+
+Operand -> "id" | BasicLit | "(" Expression ")"
+BasicLit -> intLit | floatLit | runeLit | stringLit | boolLit
+IdentifierList -> "id" | "id" "," IdentifierList
+ExpressionList -> Expression | Expression "," ExpressionList
+StatementList -> Statement ";"
+
+
+
+
+
