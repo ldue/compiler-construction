@@ -123,33 +123,6 @@ compiler_construction/fast:
 	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/build
 .PHONY : compiler_construction/fast
 
-AST_Node.o: AST_Node.cpp.o
-
-.PHONY : AST_Node.o
-
-# target to build an object file
-AST_Node.cpp.o:
-	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/AST_Node.cpp.o
-.PHONY : AST_Node.cpp.o
-
-AST_Node.i: AST_Node.cpp.i
-
-.PHONY : AST_Node.i
-
-# target to preprocess a source file
-AST_Node.cpp.i:
-	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/AST_Node.cpp.i
-.PHONY : AST_Node.cpp.i
-
-AST_Node.s: AST_Node.cpp.s
-
-.PHONY : AST_Node.s
-
-# target to generate assembly for a file
-AST_Node.cpp.s:
-	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/AST_Node.cpp.s
-.PHONY : AST_Node.cpp.s
-
 Lexer.o: Lexer.cpp.o
 
 .PHONY : Lexer.o
@@ -231,6 +204,60 @@ Token.cpp.s:
 	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Token.cpp.s
 .PHONY : Token.cpp.s
 
+lib/AST_Node.o: lib/AST_Node.cpp.o
+
+.PHONY : lib/AST_Node.o
+
+# target to build an object file
+lib/AST_Node.cpp.o:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o
+.PHONY : lib/AST_Node.cpp.o
+
+lib/AST_Node.i: lib/AST_Node.cpp.i
+
+.PHONY : lib/AST_Node.i
+
+# target to preprocess a source file
+lib/AST_Node.cpp.i:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.i
+.PHONY : lib/AST_Node.cpp.i
+
+lib/AST_Node.s: lib/AST_Node.cpp.s
+
+.PHONY : lib/AST_Node.s
+
+# target to generate assembly for a file
+lib/AST_Node.cpp.s:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.s
+.PHONY : lib/AST_Node.cpp.s
+
+lib/Tree.o: lib/Tree.cpp.o
+
+.PHONY : lib/Tree.o
+
+# target to build an object file
+lib/Tree.cpp.o:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o
+.PHONY : lib/Tree.cpp.o
+
+lib/Tree.i: lib/Tree.cpp.i
+
+.PHONY : lib/Tree.i
+
+# target to preprocess a source file
+lib/Tree.cpp.i:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/Tree.cpp.i
+.PHONY : lib/Tree.cpp.i
+
+lib/Tree.s: lib/Tree.cpp.s
+
+.PHONY : lib/Tree.s
+
+# target to generate assembly for a file
+lib/Tree.cpp.s:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/Tree.cpp.s
+.PHONY : lib/Tree.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -267,9 +294,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... compiler_construction"
-	@echo "... AST_Node.o"
-	@echo "... AST_Node.i"
-	@echo "... AST_Node.s"
 	@echo "... Lexer.o"
 	@echo "... Lexer.i"
 	@echo "... Lexer.s"
@@ -279,6 +303,12 @@ help:
 	@echo "... Token.o"
 	@echo "... Token.i"
 	@echo "... Token.s"
+	@echo "... lib/AST_Node.o"
+	@echo "... lib/AST_Node.i"
+	@echo "... lib/AST_Node.s"
+	@echo "... lib/Tree.o"
+	@echo "... lib/Tree.i"
+	@echo "... lib/Tree.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

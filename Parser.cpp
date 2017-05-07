@@ -36,13 +36,13 @@ void Parser::advTok() {
     curToken = lex->getNextTok();
     if (curToken.getType() == tok_err) {
         std::cout << "Lexer Error" << std::endl;
-        exit(1);
+        //exit(1);
     }
     if (curToken.getType() == tok_eof) {
-        std::cout << "EOF" << std::endl;
+        //std::cout << "EOF" << std::endl;
     }
     if (err) {
-        exit(1);
+        //exit(1);
     }
 }
 

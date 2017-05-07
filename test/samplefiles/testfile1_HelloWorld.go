@@ -9,8 +9,6 @@ import(
 )
 var a int;
 func main() {
-	var a int;
-	a = 5;
-	fmt.PrintLn(a);
+	var b string;
 }
 /*That work*/

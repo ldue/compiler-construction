@@ -2,19 +2,19 @@
 // Created by Lars on 10.04.2017.
 //
 #include <iostream>
-
 #include "Lexer.h"
-#include "lib/Tree.h"
-#include "Token.h"
 #include "Parser.h"
 
-int main () {
-    Lexer* lex = new Lexer("/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/test/samplefiles/testfile1_HelloWorld.go");
-    std::vector<std::string>* symTab = lex->getSymbolTable();
-    Token curTok = Token(tok_err);
-    Parser* parser = new Parser(lex);
-    parser->start();
-    parser->printAST(symTab);
+int main(int argc, char *argv[]) {
+    //"/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/test/samplefiles/"
+    for (int i = 1; i < argc; i++) {
+        Lexer *lex = new Lexer(argv[i]);
+        std::vector<std::string> *symTab = lex->getSymbolTable();
+        Parser *parser = new Parser(lex);
+        parser->start();
+        parser->printAST(symTab);
+        std::cout << "=====================================================" << std::endl;
+    }
     /*do {
         curTok = lex->getNextTok();
         std::cout << "TOK " << curTok.getTokenName();

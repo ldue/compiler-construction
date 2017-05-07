@@ -153,28 +153,52 @@ CMakeFiles/compiler_construction.dir/Parser.cpp.o.provides: CMakeFiles/compiler_
 CMakeFiles/compiler_construction.dir/Parser.cpp.o.provides.build: CMakeFiles/compiler_construction.dir/Parser.cpp.o
 
 
-CMakeFiles/compiler_construction.dir/AST_Node.cpp.o: CMakeFiles/compiler_construction.dir/flags.make
-CMakeFiles/compiler_construction.dir/AST_Node.cpp.o: ../AST_Node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/compiler_construction.dir/AST_Node.cpp.o"
-	/usr/bin/c++.exe   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compiler_construction.dir/AST_Node.cpp.o -c /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/AST_Node.cpp
+CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o: CMakeFiles/compiler_construction.dir/flags.make
+CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o: ../lib/AST_Node.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o"
+	/usr/bin/c++.exe   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o -c /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/lib/AST_Node.cpp
 
-CMakeFiles/compiler_construction.dir/AST_Node.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compiler_construction.dir/AST_Node.cpp.i"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/AST_Node.cpp > CMakeFiles/compiler_construction.dir/AST_Node.cpp.i
+CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.i"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/lib/AST_Node.cpp > CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.i
 
-CMakeFiles/compiler_construction.dir/AST_Node.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compiler_construction.dir/AST_Node.cpp.s"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/AST_Node.cpp -o CMakeFiles/compiler_construction.dir/AST_Node.cpp.s
+CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.s"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/lib/AST_Node.cpp -o CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.s
 
-CMakeFiles/compiler_construction.dir/AST_Node.cpp.o.requires:
+CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o.requires:
 
-.PHONY : CMakeFiles/compiler_construction.dir/AST_Node.cpp.o.requires
+.PHONY : CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o.requires
 
-CMakeFiles/compiler_construction.dir/AST_Node.cpp.o.provides: CMakeFiles/compiler_construction.dir/AST_Node.cpp.o.requires
-	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/AST_Node.cpp.o.provides.build
-.PHONY : CMakeFiles/compiler_construction.dir/AST_Node.cpp.o.provides
+CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o.provides: CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o.requires
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o.provides.build
+.PHONY : CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o.provides
 
-CMakeFiles/compiler_construction.dir/AST_Node.cpp.o.provides.build: CMakeFiles/compiler_construction.dir/AST_Node.cpp.o
+CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o.provides.build: CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o
+
+
+CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o: CMakeFiles/compiler_construction.dir/flags.make
+CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o: ../lib/Tree.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o"
+	/usr/bin/c++.exe   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o -c /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/lib/Tree.cpp
+
+CMakeFiles/compiler_construction.dir/lib/Tree.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compiler_construction.dir/lib/Tree.cpp.i"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/lib/Tree.cpp > CMakeFiles/compiler_construction.dir/lib/Tree.cpp.i
+
+CMakeFiles/compiler_construction.dir/lib/Tree.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compiler_construction.dir/lib/Tree.cpp.s"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/lib/Tree.cpp -o CMakeFiles/compiler_construction.dir/lib/Tree.cpp.s
+
+CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o.requires:
+
+.PHONY : CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o.requires
+
+CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o.provides: CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o.requires
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o.provides.build
+.PHONY : CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o.provides
+
+CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o.provides.build: CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o
 
 
 # Object files for target compiler_construction
@@ -183,7 +207,8 @@ compiler_construction_OBJECTS = \
 "CMakeFiles/compiler_construction.dir/Lexer.cpp.o" \
 "CMakeFiles/compiler_construction.dir/Token.cpp.o" \
 "CMakeFiles/compiler_construction.dir/Parser.cpp.o" \
-"CMakeFiles/compiler_construction.dir/AST_Node.cpp.o"
+"CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o" \
+"CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o"
 
 # External object files for target compiler_construction
 compiler_construction_EXTERNAL_OBJECTS =
@@ -192,10 +217,11 @@ compiler_construction.exe: CMakeFiles/compiler_construction.dir/main.cpp.o
 compiler_construction.exe: CMakeFiles/compiler_construction.dir/Lexer.cpp.o
 compiler_construction.exe: CMakeFiles/compiler_construction.dir/Token.cpp.o
 compiler_construction.exe: CMakeFiles/compiler_construction.dir/Parser.cpp.o
-compiler_construction.exe: CMakeFiles/compiler_construction.dir/AST_Node.cpp.o
+compiler_construction.exe: CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o
+compiler_construction.exe: CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o
 compiler_construction.exe: CMakeFiles/compiler_construction.dir/build.make
 compiler_construction.exe: CMakeFiles/compiler_construction.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable compiler_construction.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable compiler_construction.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/compiler_construction.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -207,7 +233,8 @@ CMakeFiles/compiler_construction.dir/requires: CMakeFiles/compiler_construction.
 CMakeFiles/compiler_construction.dir/requires: CMakeFiles/compiler_construction.dir/Lexer.cpp.o.requires
 CMakeFiles/compiler_construction.dir/requires: CMakeFiles/compiler_construction.dir/Token.cpp.o.requires
 CMakeFiles/compiler_construction.dir/requires: CMakeFiles/compiler_construction.dir/Parser.cpp.o.requires
-CMakeFiles/compiler_construction.dir/requires: CMakeFiles/compiler_construction.dir/AST_Node.cpp.o.requires
+CMakeFiles/compiler_construction.dir/requires: CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o.requires
+CMakeFiles/compiler_construction.dir/requires: CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o.requires
 
 .PHONY : CMakeFiles/compiler_construction.dir/requires
 

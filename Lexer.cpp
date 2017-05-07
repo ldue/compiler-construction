@@ -15,7 +15,7 @@ Lexer::Lexer(std::string path) {
     srcFile = new std::ifstream(path);
     std::string line;
     if (srcFile->is_open()) {
-        std::cout << "LEXER: Opened SourcFile successfully" << std::endl;
+        std::cout << "LEXER: Opened SourceFile " << path << " successfully" << std::endl;
     } else {
         std::cout << "LEXER: ERROR while opening SourceFile" << std::endl;
         exit(1);
@@ -34,11 +34,11 @@ void Lexer::skipUntilEndOfLine() {
 Token Lexer::getAlphaTok() {
     std::string tokStr = "";
     tokStr += curChar;
-    while (isalnum(srcFile->peek()) && !srcFile->eof() ) {
+    while (isalnum(srcFile->peek()) && !srcFile->eof()) {
         advCurChar();
         tokStr += curChar;
     }
-    if(srcFile->eof())
+    if (srcFile->eof())
         return Token(tok_err);
 
     //switch keywords
@@ -52,7 +52,7 @@ Token Lexer::getAlphaTok() {
         return tmp;
 
     SymbolTable->push_back(tokStr);
-    return Token(tok_id, SymbolTable->size()-1);
+    return Token(tok_id, SymbolTable->size() - 1);
 
 }
 
@@ -103,28 +103,28 @@ Token Lexer::getKeywordTok(std::string keyword) {
     if (keyword.compare("import") == 0)
         return Token(tok_import);
     if (keyword.compare("return") == 0)
-       return Token(tok_return);
+        return Token(tok_return);
     if (keyword.compare("var") == 0)
         return Token(tok_var);
     if (keyword.compare("func") == 0)
         return Token(tok_func);
-    if(keyword.compare("int") == 0)
+    if (keyword.compare("int") == 0)
         return Token(tok_TypeInt);
-    if(keyword.compare("float") == 0)
+    if (keyword.compare("float") == 0)
         return Token(tok_TypeFloat);
-    if(keyword.compare("string") == 0)
+    if (keyword.compare("string") == 0)
         return Token(tok_TypeString);
-    if(keyword.compare("rune") == 0)
+    if (keyword.compare("rune") == 0)
         return Token(tok_TypeRune);
-    if(keyword.compare("bool") == 0)
+    if (keyword.compare("bool") == 0)
         return Token(tok_TypeBool);
     return Token(tok_err);
 }
 
 Token Lexer::getLitBoolTok(std::string keyword) {
-    if ( (keyword.compare("true") == 0) || (keyword.compare("false") == 0) ) {
+    if ((keyword.compare("true") == 0) || (keyword.compare("false") == 0)) {
         SymbolTable->push_back(keyword);
-        return Token(tok_litBool, SymbolTable->size()-1);
+        return Token(tok_litBool, SymbolTable->size() - 1);
     } else
         return Token(tok_err);
 }
@@ -132,43 +132,43 @@ Token Lexer::getLitBoolTok(std::string keyword) {
 Token Lexer::getLitStrTok() {
     std::string tokStr = "";
     advCurChar();
-    while ( (curChar != '\"') && (curChar != EOF) ) {
+    while ((curChar != '\"') && (curChar != EOF)) {
         tokStr += curChar;
         advCurChar();
     }
-    if(curChar == EOF)
+    if (curChar == EOF)
         return Token(tok_err);
 
     SymbolTable->push_back(tokStr);
-    return Token(tok_litString, SymbolTable->size()-1);
+    return Token(tok_litString, SymbolTable->size() - 1);
 }
 
 Token Lexer::getLitNumTok() {
     std::string tokStr = "";
     tokStr += curChar;
-    while ( isdigit(srcFile->peek()) && (srcFile->peek() != EOF) ){
+    while (isdigit(srcFile->peek()) && (srcFile->peek() != EOF)) {
         advCurChar();
         tokStr += curChar;
     };
     if (curChar != '.') {
         SymbolTable->push_back(tokStr);
-        return Token(tok_litInt, SymbolTable->size()-1);
+        return Token(tok_litInt, SymbolTable->size() - 1);
     } else {
         tokStr += curChar;
-        while ( isdigit(srcFile->peek()) && (srcFile->peek() != EOF) ){
-                advCurChar();
-                tokStr += curChar;
+        while (isdigit(srcFile->peek()) && (srcFile->peek() != EOF)) {
+            advCurChar();
+            tokStr += curChar;
         }
         SymbolTable->push_back(tokStr);
-        return Token(tok_litFloat, SymbolTable->size()-1);
+        return Token(tok_litFloat, SymbolTable->size() - 1);
     }
 }
 
 Token Lexer::skipCommentTok() {
-    if(srcFile->eof())
+    if (srcFile->eof())
         return Token(tok_eof);
     advCurChar();
-    switch(curChar) {
+    switch (curChar) {
         case '/': { //Single Line Comment
             skipUntilEndOfLine();
             return getNextTok();
@@ -176,7 +176,7 @@ Token Lexer::skipCommentTok() {
         case '*': { //Multi Line Comment
             do {
                 advCurChar();
-            } while ( (curChar != '*') && (srcFile->peek() != '/') && (!srcFile->eof())); // not */
+            } while ((curChar != '*') && (srcFile->peek() != '/') && (!srcFile->eof())); // not */
             advCurChar();
             advCurChar();
             return getNextTok();
@@ -201,21 +201,29 @@ Token Lexer::getNextTok() {
     if (isdigit(curChar))
         return this->getLitNumTok();
 
-    switch(curChar){
-        case '\"': return getLitStrTok();
-        case '(': return Token(tok_parL);
-        case ')': return Token(tok_parR);
-        case '[': return Token(tok_braL);
-        case ']': return Token(tok_braR);
-        case '{': return Token(tok_curL);
-        case '}': return Token(tok_curR);
-        case ';': return Token(tok_semicolon);
+    switch (curChar) {
+        case '\"':
+            return getLitStrTok();
+        case '(':
+            return Token(tok_parL);
+        case ')':
+            return Token(tok_parR);
+        case '[':
+            return Token(tok_braL);
+        case ']':
+            return Token(tok_braR);
+        case '{':
+            return Token(tok_curL);
+        case '}':
+            return Token(tok_curR);
+        case ';':
+            return Token(tok_semicolon);
         case '.': {
-            if(srcFile->peek() != '.')
+            if (srcFile->peek() != '.')
                 return Token(tok_dot);
         };
         case '=': {
-            if(srcFile->peek() != '=')
+            if (srcFile->peek() != '=')
                 return Token(tok_equals);
             else {
                 advCurChar();
@@ -223,14 +231,15 @@ Token Lexer::getNextTok() {
             }
         };
         case '+': {
-            if(srcFile->peek() != '+')
+            if (srcFile->peek() != '+')
                 return Token(tok_plus);
         };
         case '-': {
-            if(srcFile->peek() != '-')
+            if (srcFile->peek() != '-')
                 return Token(tok_minus);
         };
-        case '/': return skipCommentTok();
+        case '/':
+            return skipCommentTok();
     }
 
     return Token(tok_err);

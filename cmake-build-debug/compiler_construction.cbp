@@ -80,12 +80,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/AST_Node.cpp">
-			<Option target="compiler_construction"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/AST_Node.h">
-			<Option target="compiler_construction"/>
-		</Unit>
 		<Unit filename="/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/Lexer.cpp">
 			<Option target="compiler_construction"/>
 		</Unit>
@@ -102,6 +96,18 @@
 			<Option target="compiler_construction"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/Token.h">
+			<Option target="compiler_construction"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/lib/AST_Node.cpp">
+			<Option target="compiler_construction"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/lib/AST_Node.h">
+			<Option target="compiler_construction"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/lib/Tree.cpp">
+			<Option target="compiler_construction"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/lib/Tree.h">
 			<Option target="compiler_construction"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/main.cpp">
