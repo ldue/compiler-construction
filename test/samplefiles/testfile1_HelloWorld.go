@@ -1,5 +1,7 @@
 package main
 import "fmt"
 func main() {
-	fmt.Println("hello world")
+	var x = 1 + d;
+	fmt.Println("hello world");
 }
+//comment
