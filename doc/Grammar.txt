@@ -9,6 +9,9 @@ PackageClause -> "package" "id" ";"
 ImportClause -> "import" "stringLit" ";" ImportClause | "import" "(" ImportListEntry ")" ImportClause | E
 ImportListEntry -> "stringLit" ";" ImportListEntry | E
 
+TopLevelDeclaration -> "var" varDeclaration TopLevelDeclaration | "func" funcDeclaration TopLevelDeclaration| E
+varDeclaration -> "id" Type ";"
+Type -> "int" | "float" | "bool" | "string" | "rune"
 
 
 //BNF without left recursion following

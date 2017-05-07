@@ -21,7 +21,7 @@ private:
     char curChar;
 
     void advCurChar();
-
+    void skipUntilEndOfLine();
     Token getAlphaTok();
     Token getKeywordTok(std::string keyword);
 

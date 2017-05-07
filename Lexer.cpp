@@ -5,6 +5,7 @@
 
 #include <cstdlib>
 #include <string>
+#include <limits>
 #include "Lexer.h"
 
 Lexer::Lexer(std::string path) {
@@ -24,6 +25,10 @@ Lexer::Lexer(std::string path) {
 void Lexer::advCurChar() {
     srcFile->get(curChar);
     //std::cout << "LEXER: curChar = " << curChar << std::endl;
+}
+
+void Lexer::skipUntilEndOfLine() {
+    srcFile->ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 Token Lexer::getAlphaTok() {
@@ -103,6 +108,16 @@ Token Lexer::getKeywordTok(std::string keyword) {
         return Token(tok_var);
     if (keyword.compare("func") == 0)
         return Token(tok_func);
+    if(keyword.compare("int") == 0)
+        return Token(tok_TypeInt);
+    if(keyword.compare("float") == 0)
+        return Token(tok_TypeFloat);
+    if(keyword.compare("string") == 0)
+        return Token(tok_TypeString);
+    if(keyword.compare("rune") == 0)
+        return Token(tok_TypeRune);
+    if(keyword.compare("bool") == 0)
+        return Token(tok_TypeBool);
     return Token(tok_err);
 }
 
@@ -152,12 +167,10 @@ Token Lexer::getLitNumTok() {
 Token Lexer::skipCommentTok() {
     if(srcFile->eof())
         return Token(tok_eof);
-
+    advCurChar();
     switch(curChar) {
         case '/': { //Single Line Comment
-            do {
-                advCurChar();
-            } while ( (curChar != '\0') && !srcFile->eof()); // not newline
+            skipUntilEndOfLine();
             return getNextTok();
         }
         case '*': { //Multi Line Comment

@@ -1,17 +1,17 @@
 package main;
 import "fmt";
-//Let's also try importLists!
-
+// Let's try an import list!
 import (
 	"math";
 	"net";
 )
-/*That worked great, didn't it?
+/*That worked great, didn't it ?
 __
-*/
 
+*/
+var a int;
 func main() {
-	var x = 1 + d;
+	var x = 1 + a;
 	fmt.Println("hello world");
 }
-//comment
+//com
