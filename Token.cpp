@@ -83,6 +83,9 @@ std::string Token::getTokenName() {
         case 57 : return "++";
         case 58 : return "--";
         case 59 : return "==";
+        case 60 : return "";
+        case 61 : return "";
+        case 62 : return "=";
 
         case 70 : return "SEMICOLON";
         case 71 : return "FUNC CALL";

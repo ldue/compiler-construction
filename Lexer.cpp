@@ -128,6 +128,27 @@ Token Lexer::getLitStrTok() {
     return Token(tok_litString, SymbolTable->size()-1);
 }
 
+Token Lexer::getLitNumTok() {
+    std::string tokStr = "";
+    tokStr += curChar;
+    while ( isdigit(srcFile->peek()) && (srcFile->peek() != EOF) ){
+        advCurChar();
+        tokStr += curChar;
+    };
+    if (curChar != '.') {
+        SymbolTable->push_back(tokStr);
+        return Token(tok_litInt, SymbolTable->size()-1);
+    } else {
+        tokStr += curChar;
+        while ( isdigit(srcFile->peek()) && (srcFile->peek() != EOF) ){
+                advCurChar();
+                tokStr += curChar;
+        }
+        SymbolTable->push_back(tokStr);
+        return Token(tok_litFloat, SymbolTable->size()-1);
+    }
+}
+
 Token Lexer::skipCommentTok() {
     if(srcFile->eof())
         return Token(tok_eof);
@@ -162,6 +183,9 @@ Token Lexer::getNextTok() {
     if (isalpha(curChar))// identifier: [a-zA-Z][a-zA-Z0-9]*
         return this->getAlphaTok();
 
+    if (isdigit(curChar))
+        return this->getLitNumTok();
+
     switch(curChar){
         case '\"': return getLitStrTok();
         case '(': return Token(tok_parL);
@@ -175,8 +199,24 @@ Token Lexer::getNextTok() {
             if(srcFile->peek() != '.')
                 return Token(tok_dot);
         };
+        case '=': {
+            if(srcFile->peek() != '=')
+                return Token(tok_equals);
+            else {
+                advCurChar();
+                return Token(tok_logEq);
+            }
+        };
+        case '+': {
+            if(srcFile->peek() != '+')
+                return Token(tok_plus);
+        };
+        case '-': {
+            if(srcFile->peek() != '-')
+                return Token(tok_minus);
+        };
         case '/': return skipCommentTok();
-        }
+    }
 
     return Token(tok_err);
 }
