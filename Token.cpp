@@ -6,7 +6,7 @@
 #include "Token.h"
 
 
-Token::Token(tok type) : type(type) {}
+Token::Token(tok type) : type(type), tableIndex(-1) {}
 Token::Token(tok type, int tableIndex) : tableIndex(tableIndex), type(type) {}
 
 

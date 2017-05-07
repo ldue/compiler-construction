@@ -6,8 +6,7 @@ Sourcefile -> PackageClause ";" ImportClause ";" TopLevelDeclaration ";"
 
 PackageClause -> "package" "id" ";"
 
-ImportClause -> "import" "stringLit" ";" ImportClause | "import" "(" ImportList ")" ImportClause | E
-ImportList -> "import" "(" ImportListEntry ")" ";"
+ImportClause -> "import" "stringLit" ";" ImportClause | "import" "(" ImportListEntry ")" ImportClause | E
 ImportListEntry -> "stringLit" ";" ImportListEntry | E
 
 

@@ -17,12 +17,17 @@ class Parser {
 private:
     typedef st_tree::tree<AST_Node>::iterator iterator;
     typedef st_tree::tree<AST_Node>::node_type::iterator node_iterator;
-    Token nextToken;
+    Token curToken;
     Lexer* lex;
     st_tree:: tree<AST_Node>* astTree;
     const char* indent(unsigned int n);
+    bool err;
+    void printError(Token tok);
+    void advTok();
     void sourceFile();
     void packageClause (node_iterator parent);
+    void importClause (node_iterator parent);
+    void importListEntry (node_iterator parent);
 public:
     st_tree::tree<AST_Node>* getAstTree() const;
 
