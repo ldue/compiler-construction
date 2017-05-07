@@ -7,33 +7,35 @@
 
 #include "Lexer.h"
 #include "Token.h"
-#include "lib/st_tree.h"
+#include "lib/Tree.h"
 #include "string"
-#include "AST_Node.h"
+#include "lib/AST_Node.h"
 #include "iostream"
 
 class Parser {
 
 private:
-    typedef st_tree::tree<AST_Node>::iterator iterator;
-    typedef st_tree::tree<AST_Node>::node_type::iterator node_iterator;
     Token curToken;
     Lexer* lex;
-    st_tree:: tree<AST_Node>* astTree;
+    Tree astTree;
     const char* indent(unsigned int n);
     bool err;
     void printError(Token tok);
+    void printError(std::string err);
     void advTok();
     void sourceFile();
-    void packageClause (node_iterator parent);
-    void importClause (node_iterator parent);
-    void importListEntry (node_iterator parent);
+    void packageClause (AST_Node* parent);
+    void importClause (AST_Node* parent);
+    void importListEntry (AST_Node* parent);
+    void topLevelDeclaration (AST_Node* parent);
+    void varDeclaration(AST_Node* parent);
+    void type(AST_Node* parent);
 public:
-    st_tree::tree<AST_Node>* getAstTree() const;
+    Tree getAstTree() const;
 
 public:
     Parser(Lexer *lex);
-    void printAST();
+    void printAST(std::vector<std::string>*);
     void start();
 };
 

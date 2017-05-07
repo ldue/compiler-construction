@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include "Lexer.h"
-#include "lib/st_tree.h"
+#include "lib/Tree.h"
 #include "Token.h"
 #include "Parser.h"
 
@@ -14,7 +14,7 @@ int main () {
     Token curTok = Token(tok_err);
     Parser* parser = new Parser(lex);
     parser->start();
-    parser->printAST();
+    parser->printAST(symTab);
     /*do {
         curTok = lex->getNextTok();
         std::cout << "TOK " << curTok.getTokenName();

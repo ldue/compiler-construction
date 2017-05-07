@@ -176,7 +176,9 @@ Token Lexer::skipCommentTok() {
         case '*': { //Multi Line Comment
             do {
                 advCurChar();
-            } while ( (curChar == '*') && (srcFile->peek() == '/')); // not */
+            } while ( (curChar != '*') && (srcFile->peek() != '/') && (!srcFile->eof())); // not */
+            advCurChar();
+            advCurChar();
             return getNextTok();
         }
     }

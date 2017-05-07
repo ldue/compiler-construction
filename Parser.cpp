@@ -4,60 +4,26 @@
 
 #include "Parser.h"
 
-Parser::Parser(Lexer *lex) : lex(lex), curToken(Token(tok_err)), astTree(new st_tree::tree<AST_Node>), err(false) {
+Parser::Parser(Lexer *lex) : lex(lex), curToken(Token(tok_err)), astTree(Tree(nullptr)), err(false) {
 
 }
 
-st_tree::tree<AST_Node> *Parser::getAstTree() const {
+Tree Parser::getAstTree() const {
     return astTree;
 }
 
-void Parser::printAST() {
-    typedef st_tree::tree<AST_Node>::df_pre_iterator iterator;
-    std::vector<std::string> *symTab = lex->getSymbolTable();
-    for (iterator j(astTree->df_pre_begin()); j != astTree->df_pre_end(); ++j) {
-        // data() gives the data 'payload' of the node
-        AST_Node data = j->data();
-
-        // ply() gives the ply, or layer, of the node
-        unsigned int ply = j->ply();
-
-        // padding for nice output
-        unsigned int w = 16;
-        unsigned int padL = ply * 4;
-        unsigned int padR = w - data.getValue().size() - padL;
-
-        std::cout << indent(padL);
-        std::cout << data.getValue();
-        std::cout << indent(padR);
-        if (data.getSymbolTableIndex() != -1) {
-            std::cout << data.getSymbolTableIndex() << " : " << (*symTab)[data.getSymbolTableIndex()];
-        }
-        // is_root() is true if the node has no parent
-        // parent() returns the node's parent
-        // std::cout << "   parent= " << ((j->is_root()) ? "       " : j->parent().data().getValue());
-
-        // ply() gives the ply, or layer, of the node
-        // std::cout << "   ply= " << j->ply();
-
-        // depth() is the depth of the node's subtree
-        // std::cout << "   depth= " << j->depth();
-
-        // subtree_size() is the size of the node's subtree
-        // std::cout << "   subtree_size= " << j->subtree_size();
-        std::cout << "\n";
-    }
-}
-
-const char *Parser::indent(unsigned int n) {
-    static char const spaces[] = "                                             ";
-    static const unsigned ns = sizeof(spaces) / sizeof(*spaces);
-    return spaces + (ns - 1 - n);
+void Parser::printAST(std::vector<std::string> *symTab) {
+    astTree.printTree(symTab);
 }
 
 void Parser::printError(Token tok) {
     std::cout << "Syntax Error: Expected " << tok.getTokenName() << ", but got " << curToken.getTokenName()
               << std::endl;
+    err = true;
+}
+
+void Parser::printError(std::string err) {
+    std::cout << "Syntax Error: " << err << std::endl;
     err = true;
 }
 
@@ -81,22 +47,26 @@ void Parser::advTok() {
 }
 
 void Parser::sourceFile() {
-    astTree->insert(AST_Node("Root ->"));
-    node_iterator child = astTree->root().insert(AST_Node("SourceFile ->"));
+    astTree.setRoot(new AST_Node("Root->", -1, nullptr));
+    AST_Node *child = new AST_Node("SourceFile ->", -1, astTree.getRoot());
+    astTree.getRoot()->insertChild(child);
     packageClause(child);
     importClause(child);
+    topLevelDeclaration(child);
+    return;
 }
 
-void Parser::packageClause(Parser::node_iterator parent) {
-    node_iterator child = parent->insert(AST_Node("PackageClause ->"));
+void Parser::packageClause(AST_Node *parent) {
+    AST_Node *child = new AST_Node("PackageClause ->", -1, parent);
+    parent->insertChild(child);
     if (curToken.getType() == tok_package) {
-        child->insert(AST_Node(curToken));
+        child->insertChild(new AST_Node(curToken.getTokenName(), child));
         advTok();
         if (curToken.getType() == tok_id) {
-            child->insert(AST_Node(curToken));
+            child->insertChild(new AST_Node(curToken.getTokenName(), curToken.getTableIndex(), child));
             advTok();
             if (curToken.getType() == tok_semicolon) {
-                child->insert(AST_Node(curToken));
+                child->insertChild(new AST_Node(curToken.getTokenName(), child));
                 advTok();
                 return;
             }
@@ -107,18 +77,19 @@ void Parser::packageClause(Parser::node_iterator parent) {
     printError(Token(tok_package));
 }
 
-void Parser::importClause(Parser::node_iterator parent) {
+void Parser::importClause(AST_Node *parent) {
+    AST_Node *child = new AST_Node("ImportClause ->", -1, parent);
+    parent->insertChild(child);
     if (curToken.getType() == tok_import) {
-        node_iterator child = parent->insert(AST_Node("ImportClause ->"));
-        child->insert(AST_Node(curToken));
+        child->insertChild(new AST_Node(curToken.getTokenName(), child));
         advTok();
         switch (curToken.getType()) {
             case tok_parL: {
-                child->insert(AST_Node(curToken));
+                child->insertChild(new AST_Node(curToken.getTokenName(), child));
                 advTok();
                 importListEntry(child);
-                if(curToken.getType() == tok_parR){
-                    child->insert(AST_Node(curToken));
+                if (curToken.getType() == tok_parR) {
+                    child->insertChild(new AST_Node(curToken.getTokenName(), child));
                     advTok();
                     return;
                 }
@@ -126,10 +97,10 @@ void Parser::importClause(Parser::node_iterator parent) {
                 return;
             }
             case tok_litString: {
-                child->insert(AST_Node(curToken));
+                child->insertChild(new AST_Node(curToken.getTokenName(), curToken.getTableIndex(), child));
                 advTok();
                 if (curToken.getType() == tok_semicolon) {
-                    child->insert(AST_Node(curToken));
+                    child->insertChild(new AST_Node(curToken.getTokenName(), child));
                     advTok();
                     importClause(parent);
                     return;
@@ -147,13 +118,14 @@ void Parser::importClause(Parser::node_iterator parent) {
     return;
 }
 
-void Parser::importListEntry(Parser::node_iterator parent) {
-    node_iterator child = parent->insert(AST_Node("ImportListEntry ->"));
+void Parser::importListEntry(AST_Node *parent) {
+    AST_Node *child = new AST_Node("ImportListEntry ->", -1, parent);
+    parent->insertChild(child);
     if (curToken.getType() == tok_litString) {
-        child->insert(AST_Node(curToken));
+        child->insertChild(new AST_Node(curToken.getTokenName(), curToken.getTableIndex(),child));
         advTok();
-        if(curToken.getType() == tok_semicolon){
-            child->insert(AST_Node(curToken));
+        if (curToken.getType() == tok_semicolon) {
+            child->insertChild(new AST_Node(curToken.getTokenName(), child));
             advTok();
             importListEntry((parent));
             return;
@@ -162,3 +134,83 @@ void Parser::importListEntry(Parser::node_iterator parent) {
     }
     return;
 }
+
+void Parser::topLevelDeclaration(AST_Node *parent) {
+    AST_Node *child = new AST_Node("TopLevelDeclaration ->", -1, parent);
+    parent->insertChild(child);
+    switch (curToken.getType()) {
+        case tok_func: {
+            return;
+        }
+        case tok_var: {
+            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            advTok();
+            varDeclaration(child);
+            topLevelDeclaration(parent);
+            return;
+        }
+        default:
+            return;
+    }
+}
+
+void Parser::varDeclaration(AST_Node *parent) {
+    AST_Node *child = new AST_Node("VarDeclaration ->", -1, parent);
+    parent->insertChild(child);
+    if (curToken.getType() == tok_id) {
+        child->insertChild(new AST_Node(curToken.getTokenName(), curToken.getTableIndex(),child));
+        advTok();
+        type(child);
+        if (curToken.getType() == tok_semicolon) {
+            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            advTok();
+            return;
+        }
+        printError(tok_semicolon);
+        return;
+    }
+    printError(tok_id);
+    return;
+}
+
+void Parser::type(AST_Node *parent) {
+    AST_Node *child = new AST_Node("Type ->", -1, parent);
+    parent->insertChild(child);
+    switch (curToken.getType()) {
+        case tok_TypeBool: {
+            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            advTok();
+            return;
+        }
+        case tok_TypeString: {
+            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            advTok();
+            return;
+        }
+        case tok_TypeFloat: {
+            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            advTok();
+            return;
+        }
+        case tok_TypeRune: {
+            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            advTok();
+            return;
+        }
+        case tok_TypeInt: {
+            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            advTok();
+            return;
+        }
+        case tok_id: {
+            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            advTok();
+            return;
+        }
+        default: {
+            printError("Expected a Type after var declaration");
+            return;
+        }
+    }
+}
+

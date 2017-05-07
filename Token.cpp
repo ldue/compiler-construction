@@ -96,5 +96,11 @@ std::string Token::getTokenName() {
         case 76 : return "LITERAL RUNE";
         case 77 : return "LITERAL STRING";
         case 78 : return "LITERAL BOOL";
+        case 79: return "TYPE INT";
+        case 80: return "TYPE FLOAT";
+        case 81: return "TYPE RUNE";
+        case 82: return "TYPE STRING";
+        case 83: return "TYPE BOOL";
+        default: return "NOT DEFINED AS STRING";
     }
 }
