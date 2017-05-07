@@ -123,6 +123,33 @@ compiler_construction/fast:
 	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/build
 .PHONY : compiler_construction/fast
 
+AST_Node.o: AST_Node.cpp.o
+
+.PHONY : AST_Node.o
+
+# target to build an object file
+AST_Node.cpp.o:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/AST_Node.cpp.o
+.PHONY : AST_Node.cpp.o
+
+AST_Node.i: AST_Node.cpp.i
+
+.PHONY : AST_Node.i
+
+# target to preprocess a source file
+AST_Node.cpp.i:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/AST_Node.cpp.i
+.PHONY : AST_Node.cpp.i
+
+AST_Node.s: AST_Node.cpp.s
+
+.PHONY : AST_Node.s
+
+# target to generate assembly for a file
+AST_Node.cpp.s:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/AST_Node.cpp.s
+.PHONY : AST_Node.cpp.s
+
 Lexer.o: Lexer.cpp.o
 
 .PHONY : Lexer.o
@@ -149,6 +176,33 @@ Lexer.s: Lexer.cpp.s
 Lexer.cpp.s:
 	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Lexer.cpp.s
 .PHONY : Lexer.cpp.s
+
+Parser.o: Parser.cpp.o
+
+.PHONY : Parser.o
+
+# target to build an object file
+Parser.cpp.o:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Parser.cpp.o
+.PHONY : Parser.cpp.o
+
+Parser.i: Parser.cpp.i
+
+.PHONY : Parser.i
+
+# target to preprocess a source file
+Parser.cpp.i:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Parser.cpp.i
+.PHONY : Parser.cpp.i
+
+Parser.s: Parser.cpp.s
+
+.PHONY : Parser.s
+
+# target to generate assembly for a file
+Parser.cpp.s:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Parser.cpp.s
+.PHONY : Parser.cpp.s
 
 Token.o: Token.cpp.o
 
@@ -213,9 +267,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... compiler_construction"
+	@echo "... AST_Node.o"
+	@echo "... AST_Node.i"
+	@echo "... AST_Node.s"
 	@echo "... Lexer.o"
 	@echo "... Lexer.i"
 	@echo "... Lexer.s"
+	@echo "... Parser.o"
+	@echo "... Parser.i"
+	@echo "... Parser.s"
 	@echo "... Token.o"
 	@echo "... Token.i"
 	@echo "... Token.s"

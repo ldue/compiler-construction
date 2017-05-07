@@ -4,13 +4,18 @@
 #include <iostream>
 
 #include "Lexer.h"
+#include "lib/st_tree.h"
 #include "Token.h"
+#include "Parser.h"
 
 int main () {
-    Lexer* lex = new Lexer("/cygdrive/c/Users/Lars/Documents/CC/compiler-construction/test/samplefiles/testfile1_HelloWorld.go");
+    Lexer* lex = new Lexer("/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/test/samplefiles/testfile1_HelloWorld.go");
     std::vector<std::string>* symTab = lex->getSymbolTable();
     Token curTok = Token(tok_err);
-    do {
+    Parser* parser = new Parser(lex);
+    parser->start();
+    parser->printAST();
+    /*do {
         curTok = lex->getNextTok();
         std::cout << "TOK " << curTok.getTokenName();
         if(curTok.getType()== tok_id || curTok.getType()== tok_litString || curTok.getType()== tok_litBool){
@@ -20,6 +25,6 @@ int main () {
         }
         std::cout << std::endl;
     } while ( (curTok.getType() != tok_err) && (curTok.getType() != tok_eof) );
-    std::cout << "TOK " << symTab->size() << std::endl;
+    std::cout << "TOK " << symTab->size() << std::endl;*/
     return 0;
 }
