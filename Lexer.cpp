@@ -170,6 +170,7 @@ Token Lexer::getNextTok() {
         case ']': return Token(tok_braR);
         case '{': return Token(tok_curL);
         case '}': return Token(tok_curR);
+        case ';': return Token(tok_semicolon);
         case '.': {
             if(srcFile->peek() != '.')
                 return Token(tok_dot);
