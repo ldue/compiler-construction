@@ -11,8 +11,18 @@ ImportListEntry -> "stringLit" ";" ImportListEntry | E
 
 TopLevelDeclaration -> "var" varDeclaration TopLevelDeclaration | "func" funcDeclaration TopLevelDeclaration| E
 varDeclaration -> "id" Type ";"
+funcDeclaration -> "id" "(" ParameterSignature ")" ReturnValues "{" StatementList "}"
+StatementList -> "var" varDeclaration StatementList| "id" Expression StatementList| E
+Expression -> "=" Ex ";"| "." FunctionCall ";"
+Ex -> T Ex'
+Ex' -> "+" T Ex' |"-" T Ex'| E
+T -> FT'
+T' -> "*"F T' | "/" F T' | E
+F -> "(" Ex ")" | "id" | "intLit" | "floatLit" | "boolLit" | "stringLit" | "runeLit"
 Type -> "int" | "float" | "bool" | "string" | "rune"
-
+Lit -> "intLit" | "floatLit" | "boolLit" | "stringLit" | "runeLit"
+Operator -> "+" | "-"
+FunctionCall -> "id" "(" ParameterList ")"
 
 //BNF without left recursion following
 TopLevelDeclaration -> Declaration | FunctionDecl | Declaration TopLevelDeclaration | FunctionDecl TopLevelDeclaration | E

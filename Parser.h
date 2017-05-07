@@ -16,26 +16,48 @@ class Parser {
 
 private:
     Token curToken;
-    Lexer* lex;
+    Lexer *lex;
     Tree astTree;
-    const char* indent(unsigned int n);
     bool err;
+
     void printError(Token tok);
+
     void printError(std::string err);
+
     void advTok();
+
     void sourceFile();
-    void packageClause (AST_Node* parent);
-    void importClause (AST_Node* parent);
-    void importListEntry (AST_Node* parent);
-    void topLevelDeclaration (AST_Node* parent);
-    void varDeclaration(AST_Node* parent);
-    void type(AST_Node* parent);
+
+    void packageClause(AST_Node *parent);
+
+    void importClause(AST_Node *parent);
+
+    void importListEntry(AST_Node *parent);
+
+    void topLevelDeclaration(AST_Node *parent);
+
+    void varDeclaration(AST_Node *parent);
+
+    void funcDeclaration(AST_Node *parent);
+
+    void parameters(AST_Node *parent);
+
+    void returnValues(AST_Node *parent);
+
+    void StatementList(AST_Node *parent);
+
+    void expression(AST_Node *parent);
+
+    void type(AST_Node *parent);
+
 public:
     Tree getAstTree() const;
 
 public:
     Parser(Lexer *lex);
-    void printAST(std::vector<std::string>*);
+
+    void printAST(std::vector<std::string> *);
+
     void start();
 };
 
