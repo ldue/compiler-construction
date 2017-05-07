@@ -17,6 +17,7 @@ private:
 public:
     AST_Node(const std::string &value, int symbolTableIndex, AST_Node *parent);
     AST_Node(const std::string &value, AST_Node *parent);
+    AST_Node(Token tok, AST_Node *parent);
     const std::string &getValue() const;
     int getSymbolTableIndex() const;
     void insertChild(AST_Node* child);

@@ -60,13 +60,13 @@ void Parser::packageClause(AST_Node *parent) {
     AST_Node *child = new AST_Node("PackageClause ->", -1, parent);
     parent->insertChild(child);
     if (curToken.getType() == tok_package) {
-        child->insertChild(new AST_Node(curToken.getTokenName(), child));
+        child->insertChild(new AST_Node(curToken, child));
         advTok();
         if (curToken.getType() == tok_id) {
-            child->insertChild(new AST_Node(curToken.getTokenName(), curToken.getTableIndex(), child));
+            child->insertChild(new AST_Node(curToken, child));
             advTok();
             if (curToken.getType() == tok_semicolon) {
-                child->insertChild(new AST_Node(curToken.getTokenName(), child));
+                child->insertChild(new AST_Node(curToken, child));
                 advTok();
                 return;
             }
@@ -81,15 +81,15 @@ void Parser::importClause(AST_Node *parent) {
     AST_Node *child = new AST_Node("ImportClause ->", -1, parent);
     parent->insertChild(child);
     if (curToken.getType() == tok_import) {
-        child->insertChild(new AST_Node(curToken.getTokenName(), child));
+        child->insertChild(new AST_Node(curToken, child));
         advTok();
         switch (curToken.getType()) {
             case tok_parL: {
-                child->insertChild(new AST_Node(curToken.getTokenName(), child));
+                child->insertChild(new AST_Node(curToken, child));
                 advTok();
                 importListEntry(child);
                 if (curToken.getType() == tok_parR) {
-                    child->insertChild(new AST_Node(curToken.getTokenName(), child));
+                    child->insertChild(new AST_Node(curToken, child));
                     advTok();
                     return;
                 }
@@ -97,10 +97,10 @@ void Parser::importClause(AST_Node *parent) {
                 return;
             }
             case tok_litString: {
-                child->insertChild(new AST_Node(curToken.getTokenName(), curToken.getTableIndex(), child));
+                child->insertChild(new AST_Node(curToken, child));
                 advTok();
                 if (curToken.getType() == tok_semicolon) {
-                    child->insertChild(new AST_Node(curToken.getTokenName(), child));
+                    child->insertChild(new AST_Node(curToken, child));
                     advTok();
                     importClause(parent);
                     return;
@@ -122,10 +122,10 @@ void Parser::importListEntry(AST_Node *parent) {
     AST_Node *child = new AST_Node("ImportListEntry ->", -1, parent);
     parent->insertChild(child);
     if (curToken.getType() == tok_litString) {
-        child->insertChild(new AST_Node(curToken.getTokenName(), curToken.getTableIndex(),child));
+        child->insertChild(new AST_Node(curToken,child));
         advTok();
         if (curToken.getType() == tok_semicolon) {
-            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            child->insertChild(new AST_Node(curToken, child));
             advTok();
             importListEntry((parent));
             return;
@@ -143,7 +143,7 @@ void Parser::topLevelDeclaration(AST_Node *parent) {
             return;
         }
         case tok_var: {
-            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            child->insertChild(new AST_Node(curToken, child));
             advTok();
             varDeclaration(child);
             topLevelDeclaration(parent);
@@ -158,11 +158,11 @@ void Parser::varDeclaration(AST_Node *parent) {
     AST_Node *child = new AST_Node("VarDeclaration ->", -1, parent);
     parent->insertChild(child);
     if (curToken.getType() == tok_id) {
-        child->insertChild(new AST_Node(curToken.getTokenName(), curToken.getTableIndex(),child));
+        child->insertChild(new AST_Node(curToken,child));
         advTok();
         type(child);
         if (curToken.getType() == tok_semicolon) {
-            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            child->insertChild(new AST_Node(curToken, child));
             advTok();
             return;
         }
@@ -178,32 +178,32 @@ void Parser::type(AST_Node *parent) {
     parent->insertChild(child);
     switch (curToken.getType()) {
         case tok_TypeBool: {
-            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            child->insertChild(new AST_Node(curToken, child));
             advTok();
             return;
         }
         case tok_TypeString: {
-            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            child->insertChild(new AST_Node(curToken, child));
             advTok();
             return;
         }
         case tok_TypeFloat: {
-            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            child->insertChild(new AST_Node(curToken, child));
             advTok();
             return;
         }
         case tok_TypeRune: {
-            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            child->insertChild(new AST_Node(curToken, child));
             advTok();
             return;
         }
         case tok_TypeInt: {
-            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            child->insertChild(new AST_Node(curToken, child));
             advTok();
             return;
         }
         case tok_id: {
-            child->insertChild(new AST_Node(curToken.getTokenName(), child));
+            child->insertChild(new AST_Node(curToken, child));
             advTok();
             return;
         }

@@ -37,6 +37,12 @@ AST_Node::AST_Node(const std::string &value, AST_Node *parent) : value(value), s
     children = new std::vector<AST_Node*>;
 }
 
+AST_Node::AST_Node(Token tok, AST_Node *parent) {
+    children = new std::vector<AST_Node*>;
+    value = tok.getTokenName();
+    symbolTableIndex = tok.getTableIndex();
+}
+
 void AST_Node::print(int depth, std::vector<std::string>* symTab) {
     for(int i = 0; i<depth;i++){
         std::cout<<"\t";
