@@ -6,4 +6,6 @@ do
   echo "Processing $f file..."
   # take action on each file. $f store current file name
   ./cmake-build-debug/compiler_construction.exe $f
- done
+done
+
+read -p "Press enter to continue"
