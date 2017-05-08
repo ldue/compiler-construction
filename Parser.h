@@ -48,7 +48,21 @@ private:
 
     void expression(AST_Node *parent);
 
+    void functionCall(AST_Node *parent);
+
+    void parameterList(AST_Node *parent);
+
     void type(AST_Node *parent);
+
+    void mathExpression(AST_Node *parent);
+
+    void mathExpression_der(AST_Node *parent);
+
+    void term(AST_Node *parent);
+
+    void term_der(AST_Node *parent);
+
+    void factor(AST_Node *parent);
 
 public:
     Tree getAstTree() const;

@@ -253,6 +253,63 @@ void Parser::StatementList(AST_Node *parent) {
 }
 
 void Parser::expression(AST_Node *parent) {
+    AST_Node *child = new AST_Node("Expression ->", -1, parent);
+    parent->insertChild(child);
+    switch (curToken.getType()) {
+        case tok_equals: {
+            child->insertChild(new AST_Node(curToken, child));
+            advTok();
+            mathExpression(child);
+            break;
+        }
+        case tok_dot: {
+            child->insertChild(new AST_Node(curToken, child));
+            advTok();
+            functionCall(child);
+            break;
+        }
+        default: {
+            printError("Expected = or .");
+            return;
+        }
+    }
+    if (curToken.getType() == tok_semicolon) {
+        child->insertChild(new AST_Node(curToken, child));
+        advTok();
+        return;
+    }
+    printError(tok_semicolon);
+    return;
+}
+
+void Parser::functionCall(AST_Node *parent) {
+    AST_Node *child = new AST_Node("FunctionCall ->", -1, parent);
+    parent->insertChild(child);
+    if (curToken.getType() == tok_id) {
+        child->insertChild(new AST_Node(curToken, child));
+        advTok();
+        if (curToken.getType() == tok_parL) {
+            child->insertChild(new AST_Node(curToken, child));
+            advTok();
+            parameterList(child);
+            if (curToken.getType() == tok_parR) {
+                child->insertChild(new AST_Node(curToken, child));
+                advTok();
+                return;
+            }
+            printError(tok_parR);
+            return;
+        }
+        printError(tok_parL);
+        return;
+    }
+    printError(tok_id);
+    return;
+}
+
+void Parser::parameterList(AST_Node *parent) {
+    AST_Node *child = new AST_Node("ParameterList ->", -1, parent);
+    parent->insertChild(child);
     return;
 }
 
@@ -297,3 +354,70 @@ void Parser::type(AST_Node *parent) {
     }
 }
 
+void Parser::mathExpression(AST_Node *parent) {
+    AST_Node *child = new AST_Node("MathExpression ->", -1, parent);
+    parent->insertChild(child);
+    term(child);
+    mathExpression_der(child);
+}
+
+void Parser::mathExpression_der(AST_Node *parent) {
+    AST_Node *child = new AST_Node("MathExpression_der ->", -1, parent);
+    parent->insertChild(child);
+    if((curToken.getType() == tok_plus) || (curToken.getType() == tok_minus)) {
+        child->insertChild(new AST_Node(curToken, child));
+        advTok();
+        term(child);
+        mathExpression_der(child);
+        return;
+    }
+    return;
+}
+
+void Parser::term(AST_Node *parent) {
+    AST_Node *child = new AST_Node("Term ->", -1, parent);
+    parent->insertChild(child);
+    factor(child);
+    term_der(child);
+}
+
+void Parser::term_der(AST_Node *parent) {
+    AST_Node *child = new AST_Node("Term_der ->", -1, parent);
+    parent->insertChild(child);
+    if((curToken.getType() == tok_mul) || (curToken.getType() == tok_div)){
+        child->insertChild(new AST_Node(curToken, child));
+        advTok();
+        factor(child);
+        term_der(child);
+        return;
+    }
+    return;
+}
+
+void Parser::factor(AST_Node *parent) {
+    AST_Node *child = new AST_Node("Factor ->", -1, parent);
+    parent->insertChild(child);
+    switch(curToken.getType()){
+        case tok_parL:{
+            child->insertChild(new AST_Node(curToken, child));
+            advTok();
+            mathExpression(child);
+            if(curToken.getType() == tok_parR){
+                child->insertChild(new AST_Node(curToken, child));
+                return;
+            }
+            printError(tok_parR);
+            return;
+        }
+        case tok_id:
+        case tok_litString:
+        case tok_litBool:
+        case tok_litFloat:
+        case tok_litInt:
+        case tok_litRune:{
+            child->insertChild(new AST_Node(curToken, child));
+            advTok();
+            return;
+        }
+    }
+}

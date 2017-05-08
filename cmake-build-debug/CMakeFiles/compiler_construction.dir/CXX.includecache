@@ -83,12 +83,10 @@ vector
 /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/main.cpp
 iostream
 -
+cstring
+-
 Lexer.h
 /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/Lexer.h
-lib/Tree.h
-/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/lib/Tree.h
-Token.h
-/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/Token.h
 Parser.h
 /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/Parser.h
 

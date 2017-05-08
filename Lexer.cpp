@@ -238,8 +238,13 @@ Token Lexer::getNextTok() {
             if (srcFile->peek() != '-')
                 return Token(tok_minus);
         };
+        case '*': {
+            return Token(tok_mul);
+        }
         case '/':
-            return skipCommentTok();
+            if ((srcFile->peek() == '*') || (srcFile->peek() == '/'))
+                return skipCommentTok();
+            return Token(tok_div);
     }
 
     return Token(tok_err);

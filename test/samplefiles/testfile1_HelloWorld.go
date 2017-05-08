@@ -10,5 +10,8 @@ import(
 var a int;
 func main() {
 	var b string;
+	b.a();
+	a = 20 * 10 + b;
+	a = 20 * (10 + b);
 }
 /*That work*/

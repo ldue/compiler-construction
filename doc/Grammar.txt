@@ -24,6 +24,9 @@ Lit -> "intLit" | "floatLit" | "boolLit" | "stringLit" | "runeLit"
 Operator -> "+" | "-"
 FunctionCall -> "id" "(" ParameterList ")"
 
+
+
+
 //BNF without left recursion following
 TopLevelDeclaration -> Declaration | FunctionDecl | Declaration TopLevelDeclaration | FunctionDecl TopLevelDeclaration | E
 FunctionDecl -> FunctionDeclaration  FunctionBody

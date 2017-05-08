@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="compiler_construction" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="compiler_construction" TARGET_NAME="compiler_construction" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="compiler_construction" RUN_TARGET_NAME="compiler_construction">
+  <configuration default="false" name="compiler_construction" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/test/samplefiles/testfile1_HelloWorld.go" PASS_PARENT_ENVS_2="true" PROJECT_NAME="compiler_construction" TARGET_NAME="compiler_construction" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="compiler_construction" RUN_TARGET_NAME="compiler_construction">
     <envs />
     <method />
   </configuration>
