@@ -1,5 +1,5 @@
 Capitalized words are productions, everything in quotation marks is a terminal/token
--> : mpas to ; | : or ; E : empty
+-> : maps to ; | : or ; E : empty ;
 
 S -> Sourcefile
 Sourcefile -> PackageClause ";" ImportClause ";" TopLevelDeclaration ";"
@@ -13,16 +13,17 @@ TopLevelDeclaration -> "var" varDeclaration TopLevelDeclaration | "func" funcDec
 varDeclaration -> "id" Type ";"
 funcDeclaration -> "id" "(" ParameterSignature ")" ReturnValues "{" StatementList "}"
 StatementList -> "var" varDeclaration StatementList| "id" Expression StatementList| E
-Expression -> "=" Ex ";"| "." FunctionCall ";"
-Ex -> T Ex'
-Ex' -> "+" T Ex' |"-" T Ex'| E
-T -> FT'
-T' -> "*"F T' | "/" F T' | E
-F -> "(" Ex ")" | "id" | "intLit" | "floatLit" | "boolLit" | "stringLit" | "runeLit"
+Expression -> "=" mathExpression ";"| "." FunctionCall ";"
+mathExpression -> Term mathExpression'
+mathExpression' -> "+" Term mathExpression' |"-" Term mathExpression'| E
+Term -> Factor Term'
+Term' -> "*"Factor Term' | "/" Factor Term' | E
+Factor -> "(" mathExpression ")" | "id" | "intLit" | "floatLit" | "boolLit" | "stringLit" | "runeLit"
 Type -> "int" | "float" | "bool" | "string" | "rune"
-Lit -> "intLit" | "floatLit" | "boolLit" | "stringLit" | "runeLit"
-Operator -> "+" | "-"
 FunctionCall -> "id" "(" ParameterList ")"
+ParameterSignature -> E
+ParameterList -> E
+ReturnValues -> E
 
 
 

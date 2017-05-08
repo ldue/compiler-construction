@@ -404,6 +404,7 @@ void Parser::factor(AST_Node *parent) {
             mathExpression(child);
             if(curToken.getType() == tok_parR){
                 child->insertChild(new AST_Node(curToken, child));
+                advTok();
                 return;
             }
             printError(tok_parR);

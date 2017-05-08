@@ -14,7 +14,6 @@ void start(std::string sourcePath){
     std::cout << "=====================================================" << std::endl;
 }
 int main(int argc, char *argv[]) {
-    //"/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/test/samplefiles/"
     if (argc>1) {
         start(argv[1]);
     } else {
@@ -31,16 +30,6 @@ int main(int argc, char *argv[]) {
         start(fileName);
         remove(fileName.c_str());
     }
-    /*do {
-        curTok = lex->getNextTok();
-        std::cout << "TOK " << curTok.getTokenName();
-        if(curTok.getType()== tok_id || curTok.getType()== tok_litString || curTok.getType()== tok_litBool){
-            int index = curTok.getTableIndex();
-            std::string tmp = (*symTab)[index];
-            std::cout <<index<< " " << tmp;
-        }
-        std::cout << std::endl;
-    } while ( (curTok.getType() != tok_err) && (curTok.getType() != tok_eof) );
-    std::cout << "TOK " << symTab->size() << std::endl;*/
+
     return 0;
 }
