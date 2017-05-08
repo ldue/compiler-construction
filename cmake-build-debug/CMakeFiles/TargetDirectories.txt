@@ -1,3 +1,3 @@
-/cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cmake-build-debug/CMakeFiles/edit_cache.dir
-/cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cmake-build-debug/CMakeFiles/compiler_construction.dir
+/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug/CMakeFiles/edit_cache.dir
+/cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug/CMakeFiles/compiler_construction.dir

@@ -1,5 +1,17 @@
-package main
-import "fmt"
+package main;
+import "fmt";
+
+// Let's try an import list!
+
+import(
+	"math";
+	"net";
+)
+var a int;
 func main() {
-	fmt.Println("hello world")
+	var b string;
+	fmt.PrintLn();
+	a = 20 * 10 + b;
+	a = 20 * (10 + b);
 }
+/*That work*/

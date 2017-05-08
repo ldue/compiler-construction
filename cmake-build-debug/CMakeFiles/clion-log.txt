@@ -1,4 +1,4 @@
-C:\Users\Lars\.CLion2017.1\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/Lars/Documents/CC/compiler-construction
+C:\Users\Naschinsui\.CLion2017.1\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction
 -- Configuring done
 -- Generating done
--- Build files have been written to: /cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cmake-build-debug
+-- Build files have been written to: /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug

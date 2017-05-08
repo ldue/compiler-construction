@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /cygdrive/c/Users/Lars/.CLion2017.1/system/cygwin_cmake/bin/cmake.exe
+CMAKE_COMMAND = /cygdrive/c/Users/Naschinsui/.CLion2017.1/system/cygwin_cmake/bin/cmake.exe
 
 # The command to remove a file.
-RM = /cygdrive/c/Users/Lars/.CLion2017.1/system/cygwin_cmake/bin/cmake.exe -E remove -f
+RM = /cygdrive/c/Users/Naschinsui/.CLion2017.1/system/cygwin_cmake/bin/cmake.exe -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/c/Users/Lars/Documents/CC/compiler-construction
+CMAKE_SOURCE_DIR = /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cmake-build-debug
+CMAKE_BINARY_DIR = /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cma
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/cygdrive/c/Users/Lars/.CLion2017.1/system/cygwin_cmake/bin/cmake.exe -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/cygdrive/c/Users/Naschinsui/.CLion2017.1/system/cygwin_cmake/bin/cmake.exe -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/cygdrive/c/Users/Lars/.CLion2017.1/system/cygwin_cmake/bin/cmake.exe -E echo No\ interactive\ CMake\ dialog\ available.
+	/cygdrive/c/Users/Naschinsui/.CLion2017.1/system/cygwin_cmake/bin/cmake.exe -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cmake-build-debug/CMakeFiles /cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug/CMakeFiles /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Lars/Documents/CC/compiler-construction/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Naschinsui/CLionProjects/compiler-construction/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,6 +123,141 @@ compiler_construction/fast:
 	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/build
 .PHONY : compiler_construction/fast
 
+Lexer.o: Lexer.cpp.o
+
+.PHONY : Lexer.o
+
+# target to build an object file
+Lexer.cpp.o:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Lexer.cpp.o
+.PHONY : Lexer.cpp.o
+
+Lexer.i: Lexer.cpp.i
+
+.PHONY : Lexer.i
+
+# target to preprocess a source file
+Lexer.cpp.i:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Lexer.cpp.i
+.PHONY : Lexer.cpp.i
+
+Lexer.s: Lexer.cpp.s
+
+.PHONY : Lexer.s
+
+# target to generate assembly for a file
+Lexer.cpp.s:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Lexer.cpp.s
+.PHONY : Lexer.cpp.s
+
+Parser.o: Parser.cpp.o
+
+.PHONY : Parser.o
+
+# target to build an object file
+Parser.cpp.o:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Parser.cpp.o
+.PHONY : Parser.cpp.o
+
+Parser.i: Parser.cpp.i
+
+.PHONY : Parser.i
+
+# target to preprocess a source file
+Parser.cpp.i:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Parser.cpp.i
+.PHONY : Parser.cpp.i
+
+Parser.s: Parser.cpp.s
+
+.PHONY : Parser.s
+
+# target to generate assembly for a file
+Parser.cpp.s:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Parser.cpp.s
+.PHONY : Parser.cpp.s
+
+Token.o: Token.cpp.o
+
+.PHONY : Token.o
+
+# target to build an object file
+Token.cpp.o:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Token.cpp.o
+.PHONY : Token.cpp.o
+
+Token.i: Token.cpp.i
+
+.PHONY : Token.i
+
+# target to preprocess a source file
+Token.cpp.i:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Token.cpp.i
+.PHONY : Token.cpp.i
+
+Token.s: Token.cpp.s
+
+.PHONY : Token.s
+
+# target to generate assembly for a file
+Token.cpp.s:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/Token.cpp.s
+.PHONY : Token.cpp.s
+
+lib/AST_Node.o: lib/AST_Node.cpp.o
+
+.PHONY : lib/AST_Node.o
+
+# target to build an object file
+lib/AST_Node.cpp.o:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.o
+.PHONY : lib/AST_Node.cpp.o
+
+lib/AST_Node.i: lib/AST_Node.cpp.i
+
+.PHONY : lib/AST_Node.i
+
+# target to preprocess a source file
+lib/AST_Node.cpp.i:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.i
+.PHONY : lib/AST_Node.cpp.i
+
+lib/AST_Node.s: lib/AST_Node.cpp.s
+
+.PHONY : lib/AST_Node.s
+
+# target to generate assembly for a file
+lib/AST_Node.cpp.s:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/AST_Node.cpp.s
+.PHONY : lib/AST_Node.cpp.s
+
+lib/Tree.o: lib/Tree.cpp.o
+
+.PHONY : lib/Tree.o
+
+# target to build an object file
+lib/Tree.cpp.o:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/Tree.cpp.o
+.PHONY : lib/Tree.cpp.o
+
+lib/Tree.i: lib/Tree.cpp.i
+
+.PHONY : lib/Tree.i
+
+# target to preprocess a source file
+lib/Tree.cpp.i:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/Tree.cpp.i
+.PHONY : lib/Tree.cpp.i
+
+lib/Tree.s: lib/Tree.cpp.s
+
+.PHONY : lib/Tree.s
+
+# target to generate assembly for a file
+lib/Tree.cpp.s:
+	$(MAKE) -f CMakeFiles/compiler_construction.dir/build.make CMakeFiles/compiler_construction.dir/lib/Tree.cpp.s
+.PHONY : lib/Tree.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +294,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... compiler_construction"
+	@echo "... Lexer.o"
+	@echo "... Lexer.i"
+	@echo "... Lexer.s"
+	@echo "... Parser.o"
+	@echo "... Parser.i"
+	@echo "... Parser.s"
+	@echo "... Token.o"
+	@echo "... Token.i"
+	@echo "... Token.s"
+	@echo "... lib/AST_Node.o"
+	@echo "... lib/AST_Node.i"
+	@echo "... lib/AST_Node.s"
+	@echo "... lib/Tree.o"
+	@echo "... lib/Tree.i"
+	@echo "... lib/Tree.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
